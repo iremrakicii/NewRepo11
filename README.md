@@ -43,9 +43,9 @@ WHERE customer.customer_id IS NULL ifadesi, yalnızca customer tablosunda olmaya
 Bu sorgu, actor ve customer tablolarındaki first_name sütunlarını birleştirir. UNION komutu, her iki tablodaki benzersiz adları tek bir liste olarak döndürür.
 
 ```sql
-SELECT first_name FROM actor
-UNION
-SELECT first_name FROM customer;
+(SELECT first_name FROM actor)
+UNION ALL
+(SELECT first_name FROM customer);
 ```
 UNION komutu, yinelenen verileri tekilleştirir ve yalnızca benzersiz adları döndürür.
 
@@ -53,9 +53,9 @@ UNION komutu, yinelenen verileri tekilleştirir ve yalnızca benzersiz adları d
 Bu sorgu, her iki tabloda da ortak olan first_name değerlerini döndürür. INTERSECT komutu, sadece her iki sorguda da bulunan kayıtları getirir.
 
 ```sql
-SELECT first_name FROM actor
-INTERSECT
-SELECT first_name FROM customer;
+(SELECT first_name FROM actor)
+INTERSECT ALL
+(SELECT first_name FROM customer);
 ```
 INTERSECT komutu, sadece her iki tabloda bulunan first_name değerlerini döndürür.
 
@@ -63,8 +63,8 @@ INTERSECT komutu, sadece her iki tabloda bulunan first_name değerlerini döndü
 Bu sorgu, actor tablosunda olup customer tablosunda olmayan first_name değerlerini döndürür. EXCEPT komutu, ilk sorguda olup ikinci sorguda olmayan verileri getirir.
 
 ```sql
-SELECT first_name FROM actor
-EXCEPT
-SELECT first_name FROM customer;
+(SELECT first_name FROM actor)
+EXCEPT ALL
+(SELECT first_name FROM customer);
 ```
 EXCEPT komutu, yalnızca actor tablosunda bulunan ancak customer tablosunda olmayan first_name değerlerini döndürür.
